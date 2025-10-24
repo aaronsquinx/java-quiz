@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Quiz</title>
+    <link rel="stylesheet" href="DOM.css" />
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Simple JavaScript Quiz</h1>
+      <div id="question-container">
+        <h3 id="question"></h3>
+        <button id="start-btn">Start</button>
+        <div id="answers"></div>
+        <button id="next-btn" class="hidden">Next Question</button>
+      </div>
+      <div id="results-container" class="hidden">
+        <h2>Quiz Results</h2>
+        <p id="score"></p>
+        <button id="restart-btn">Restart Quiz</button>
+      </div>
+    </div>
+    <script src="DOM.js"></script>
+  </body>
+</html>
