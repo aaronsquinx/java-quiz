@@ -51,10 +51,10 @@ button:disabled {
   display: none;
 }
 .correct {
-  color: green;
+  background-color: green;
 }
 .incorrect {
-  color: red;
+  background-color: red;
 }
 button {
   margin: 5px;

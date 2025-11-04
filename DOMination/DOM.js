@@ -64,20 +64,16 @@ function loadQuestion() {
 
 //eventlistiner for next button that runs load questuin function
 nextButton.addEventListener("click", () => {
+  optionsContainer.innerHTML = "";
   loadQuestion();
 });
 
-// function displayQuestion() {
-//   const currentQuestion = loadQuestion();
-//   if (currentQuestion) {
-//     questionContainer.firstElementChild.innerText = currentQuestion.question;
-//     optionsContainer.innerHTML = "";
-//     currentQuestion.options.forEach((option, index) => {
-//       const button = document.createElement("button");
-//       button.innerText = option;
-//       button.classList.add("option-btn");
-//       button.addEventListener("click", () => selectOption(index));
-//       optionsContainer.appendChild(button);
-//     });
-//   }
-// }
+function showScore() {
+  if ((currentQuestionIndex = quizData.length)) {
+    questionContainer.innerHTML = "";
+    scoreContainer.classList.remove("hidden");
+    restartButton.addEventListener("click", () => {
+      location.reload();
+    });
+  }
+}
