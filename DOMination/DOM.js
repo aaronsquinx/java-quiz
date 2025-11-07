@@ -54,6 +54,14 @@ function loadQuestion() {
     currentQuestion.options.forEach((option) => {
       const button = document.createElement("button");
       button.innerText = option;
+      button.addEventListener("click", () => {
+        currentQuestion.answer.forEach(answer);
+        if (currentQuestionIndex === answer) {
+          button.classList.add = "correct";
+        } else {
+          button.classList.add("incorrect");
+        }
+      });
       optionsContainer.appendChild(button);
     });
     currentQuestionIndex++;
