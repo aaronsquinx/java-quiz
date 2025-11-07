@@ -55,9 +55,8 @@ function loadQuestion() {
       const button = document.createElement("button");
       button.innerText = option;
       button.addEventListener("click", () => {
-        currentQuestion.answer.forEach(answer);
-        if (currentQuestionIndex === answer) {
-          button.classList.add = "correct";
+        if (currentQuestionIndex.answer) {
+          button.classList.add("correct");
         } else {
           button.classList.add("incorrect");
         }
