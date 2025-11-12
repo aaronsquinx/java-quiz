@@ -51,15 +51,30 @@ function loadQuestion() {
   if (currentQuestionIndex < quizData.length) {
     const currentQuestion = quizData[currentQuestionIndex];
     question.innerText = currentQuestion.question;
-    currentQuestion.options.forEach((option) => {
+    optionsContainer.innerHTML = "";
+    let feedback = document.getElementById("feedback");
+    if (feedback) feedback.remove();
+
+    currentQuestion.options.forEach((option, idx) => {
       const button = document.createElement("button");
       button.innerText = option;
-      button.addEventListener("click", () => {
-        if ((currentQuestionIndex.answer = true)) {
+      button.classList.add("option-btn");
+      button.addEventListener("click", function () {
+        const allButtons = optionsContainer.querySelectorAll("buttons");
+        allButtons.forEach((btn) => (btn.disabled = true));
+
+        let feedback = document.createElement("div");
+        feedback.id = "feedback";
+        if (idx === currentQuestion.answer) {
+          feedback.innerText = "correct";
           button.classList.add("correct");
+          score++;
         } else {
+          feedback.innerText = "incorrect";
           button.classList.add("incorrect");
+          allButtons[currentQuestion.answer].classList.add("correct");
         }
+        optionsContainer.appendChild(feedback);
       });
       optionsContainer.appendChild(button);
     });
@@ -76,8 +91,9 @@ nextButton.addEventListener("click", () => {
 });
 
 function showScore() {
-  if ((currentQuestionIndex = quizData.length)) {
+  if (currentQuestionIndex === quizData.length) {
     questionContainer.innerHTML = "";
+    scoreElement.innerText = `Score: ${score} / ${quizData.length}`;
     scoreContainer.classList.remove("hidden");
     restartButton.addEventListener("click", () => {
       location.reload();
