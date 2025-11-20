@@ -52,27 +52,29 @@ function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
     question.innerText = currentQuestion.question;
     optionsContainer.innerHTML = "";
+
     let feedback = document.getElementById("feedback");
     if (feedback) feedback.remove();
 
     currentQuestion.options.forEach((option, idx) => {
       const button = document.createElement("button");
       button.innerText = option;
-      button.classList.add("option-btn");
+
       button.addEventListener("click", function () {
-        const allButtons = optionsContainer.querySelectorAll("buttons");
+        const allButtons = optionsContainer.querySelectorAll("button");
         allButtons.forEach((btn) => (btn.disabled = true));
 
         let feedback = document.createElement("div");
         feedback.id = "feedback";
         if (idx === currentQuestion.answer) {
-          feedback.innerText = "correct";
-          button.classList.add("correct");
+          feedback.innerText = "Correct";
+          button.style.backgroundColor = "#008000";
           score++;
         } else {
-          feedback.innerText = "incorrect";
-          button.classList.add("incorrect");
-          allButtons[currentQuestion.answer].classList.add("correct");
+          feedback.innerText = "Incorrect";
+          button.style.backgroundColor = "#ff0000";
+
+          allButtons[currentQuestion.answer].style.backgroundColor = "#008000";
         }
         optionsContainer.appendChild(feedback);
       });
